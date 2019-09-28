@@ -1,10 +1,7 @@
 package com.evolution;
 
-import org.json.JSONArray;
-import org.json.JSONWriter;
 import org.json.*;
 
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +13,11 @@ public class Simulation {
     public ArrayList<Player> population;
     private int generation;
 
+    /**
+     * Constructor for the Simulation class.
+     *
+     * @param populationSize The size of the population of each generation.
+     */
     Simulation(int populationSize)
     {
         this.populationSize = populationSize;
@@ -24,6 +26,12 @@ public class Simulation {
         this.generation = 0;
     }
 
+
+    /**
+     * Select the best Parent and generates the next population
+     *
+     * @return The best player in the generation.
+     */
     public Player generateNextGeneration()
     {
         // find the player with highest score
@@ -47,6 +55,9 @@ public class Simulation {
         return parent;
     }
 
+    /**
+     * Generates an initial population with random players.
+     */
     public void generateInitialPopulation()
     {
         Player p;
@@ -58,8 +69,10 @@ public class Simulation {
         }
     }
 
-    /* saves the current generation as JSON
-    * the file will have the generation number as the name and will contain up to count number of players
+    /**
+     * Saves The best members of the current generation as JSON.
+     *
+     * @param count The number of the players to be saved.
      */
     public void saveAsJSON(int count)
     {
@@ -91,10 +104,12 @@ public class Simulation {
         {
             e.printStackTrace();
         }
-
-
     }
 
+
+    /**
+     * Makes each two members of the generation play a game against each other.
+     */
     public void playGames()
     {
         TicTacToeGame game;
@@ -155,6 +170,11 @@ public class Simulation {
         }
     }
 
+    /**
+     * Play a game against a selected player.
+     *
+     * @param p A player to play against the user.
+     */
     public void playAgainstHuman(Player p)
     {
         TicTacToeGame game = new TicTacToeGame();
@@ -233,6 +253,10 @@ public class Simulation {
 
     // setters and getters
 
+    /**
+     *
+     * @return The generation count.
+     */
     public int getGeneration()
     {
         return this.generation;

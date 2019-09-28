@@ -27,6 +27,11 @@ public class Main {
                     p.getScore(), p.getWinCount(), p.getLossCount(), p.getIllegalCount(), p.getDrawCount()
             );
             System.out.println("---");
+            //save every 100 generations
+            if (simulation.getGeneration() % 100 == 0)
+            {
+                simulation.saveAsJSON(10);
+            }
         }
         simulation.saveAsJSON(10);
     }

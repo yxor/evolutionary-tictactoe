@@ -2,9 +2,10 @@ package com.evolution;
 
 class TicTacToeGame
 {
-    /* game starts as a black board
+    /* The tic tac toe game starts as a black board
      *  X is represented with +1
      *  O is represented with -1
+     *  an Empty cell is represented by 0
      *  X always moves first
      */
     private int[] gameState = {0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -15,6 +16,12 @@ class TicTacToeGame
         this.running = true;
     }
 
+
+    /**
+     * Validate's The state of the boards, Checks the existance of a Winner or a Draw.
+     *
+     * @return the state of the board.
+     */
     public Result validateState() {
         int vertical, horizontal;
         boolean stillGoing = false;
@@ -61,10 +68,11 @@ class TicTacToeGame
         return Result.Draw;
     }
 
-    /*
-    * play as X
-    * @param position: a position in the board between 0 and 8
-    * always returns false, unless the player made an illegal move
+    /**
+     * play as X
+     *
+     * @param position A position in the board between 0 and 8.
+     * @return         Always returns false, unless the player makes an illegal move.
      */
     public boolean playAsX(int position)
     {
@@ -78,10 +86,11 @@ class TicTacToeGame
         return false;
     }
 
-    /*
+    /**
      * play as O
-     * @param position: a position in the board between 0 and 8
-     * always returns false, unless the player made an illegal move
+     *
+     * @param position  A position in the board between 0 and 8.
+     * @return          Always returns false, unless the player makes an illegal move.
      */
     public boolean playAsO(int position)
     {
@@ -96,9 +105,10 @@ class TicTacToeGame
 
     }
 
-    /*
-    * returns a unique integer corresponding to the board state
-    */
+    /**
+     * Convert the board into an integer.
+     * @return A unique integer representing the state of the board.
+     */
     public int board2Int()
     {
         int boardCode = 0;
@@ -109,7 +119,11 @@ class TicTacToeGame
         return boardCode;
     }
 
-    // returns a string that shows the board, only used when playing against a player
+    /**
+     * Get the board as a String. Used only when playing against human player.
+     *
+     * @return A string describing the state of the board.
+     */
     public String getBoard()
     {
         String board = "";
@@ -128,6 +142,11 @@ class TicTacToeGame
 
     }
 
+    /**
+     * Get whether the game is running.
+     *
+     * @return True if the game is running, false otherwise.
+     */
     public boolean isRunning()
     {
         return this.running;
